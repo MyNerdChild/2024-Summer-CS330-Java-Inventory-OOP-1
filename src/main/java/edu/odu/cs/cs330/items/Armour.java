@@ -254,7 +254,7 @@ public class Armour extends Item {
          strBui.append("  Def: " + this.defense + "\n");
          strBui.append("  Mtl: " + this.material + "\n");
          strBui.append("  Mdr: " + this.modifier + " (Lvl " + this.modiferLevel + ")" + "\n");
-         strBui.append("  Ent: " + this.element + "\n");
+         strBui.append("  Emt: " + this.element + "\n");
 
          return strBui.toString();
     }
