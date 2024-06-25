@@ -36,8 +36,12 @@ public class Consumable extends Item {
      *
      * @param src consumable item to duplicate
      */
-    public Consumable(Consumable src)
+    public Consumable(Consumable src)//////////////////////////////////////////////////////////////////////////////////////
     {
+        this.name = src.name;
+        this.stackable = true;
+        this.effect = src.effect;
+        this.uses   = src.uses;
         // Complete this method
     }
 
@@ -85,9 +89,12 @@ public class Consumable extends Item {
      * Read Consumable Item attributes.
      */
     @Override
-    public void read(Scanner snr)
+    public void read(Scanner snr)//////////////////////////////////////////////////////////////////////////////////////////
     {
+        //a name, effect, and # uses
         super.name = snr.next();
+        this.effect = snr.next();
+        this.uses = snr.nextInt();
 
         // Complete this method
     }
@@ -96,17 +103,32 @@ public class Consumable extends Item {
      * Clone--i.e., copy--this Consumable Item.
      */
     @Override
-    public Item clone()
+    public Item clone()////////////////////////////////////////////////////////////////////////////////////////////////////
     {
-        return null;
+        return new Consumable(this);
     }
 
     /**
      * *Print* the Consumable Item
      */
     @Override
-    public String toString()
+    public String toString()///////////////////////////////////////////////////////////////////////////////////////////////
     {
-        return "Implement this function";
+        /*  Nme: Speed-II-Potion
+            Eft: Spd*2
+            Use: 1
+            Qty: 1
+        */
+
+        StringBuilder strBui =  new StringBuilder();
+
+       strBui.append("  Nme: "+ this.name+ "\n");
+       strBui.append("  Eft: " + this.effect + "\n");
+       strBui.append("  Use: " + this.uses + "\n");
+
+
+        return strBui.toString();
+        
+      
     }
 }

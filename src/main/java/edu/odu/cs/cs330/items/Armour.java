@@ -44,9 +44,17 @@ public class Armour extends Item {
      * Default to a armour with an empty name, zero durability, zero defense,
      * blank material, no modifier a zero modifier level, and a blank element.
      */
-    public Armour()
+    public Armour()////////////////////////////////////////////////////////////////////////////////////////////////////////
     {
         // Initialize all data members (including those inherited from Item)
+        super("", false);
+        durability = 0;
+        defense = 0;
+        material = "";
+        modifier = "";
+        modiferLevel = 0;
+        element = "";
+        
     }
 
     /**
@@ -54,9 +62,19 @@ public class Armour extends Item {
      *
      * @param src armour to duplicate
      */
-    public Armour(Armour src)
+    public Armour(Armour src)//////////////////////////////////////////////////////////////////////////////////////////////
     {
+        //CSS330-Review 5: Example 4
+
         // Set and/or copy data members for *this* object based on *src*.
+        this.name = src.name;
+        this.stackable = false;
+        this.durability = src.durability;
+        this.defense = src.defense;
+        this.material = src.material;
+        this.modifier = src.modifier;
+        this.modiferLevel = src.modiferLevel;
+        this.element = src.element;
     }
 
     /**
@@ -187,10 +205,18 @@ public class Armour extends Item {
      * Read Armour attributes.
      */
     @Override
-    public void read(Scanner snr)
+    public void read(Scanner snr)//////////////////////////////////////////////////////////////////////////////////////////
     {
-        super.name   = snr.next();
+        //CSS330-Review 5: Example 4
 
+        //a name, material, durability, defense, modifier, modifier level, and element
+        this.name = snr.next();
+        this.material = snr.next();
+        this.durability = snr.nextInt();
+        this.defense = snr.nextInt();
+        this.modifier = snr.next();
+        this.modiferLevel = snr.nextInt();
+        this.element = snr.next();
         // Complete this method
     }
 
@@ -198,19 +224,39 @@ public class Armour extends Item {
      * Clone--i.e., copy--this Armour.
      */
     @Override
-    public Item clone()
+    public Item clone()////////////////////////////////////////////////////////////////////////////////////////////////////
     {
+        //CSS330-Review 5: Example 4
         // Replace the next line
-        return null;
+        return new Armour(this);
     }
 
     /**
      * *Print* one Armour.
      */
     @Override
-    public String toString()
+    public String toString()///////////////////////////////////////////////////////////////////////////////////////////////
     {
-        return "Implement This Function";
+        /*
+            Nme: Boots
+            Dur: 100
+            Def: 10
+            Mtl: Diamond
+            Mdr: Protection (Lvl 3)
+            Emt: lightning
+        
+         */
+
+         StringBuilder strBui =  new StringBuilder();
+
+         strBui.append("  Nme: " + this.name + "\n");
+         strBui.append("  Dur: " + this.durability + "\n");
+         strBui.append("  Def: " + this.defense + "\n");
+         strBui.append("  Mtl: " + this.material + "\n");
+         strBui.append("  Mdr: " + this.modifier + " (Lvl " + this.modiferLevel + ")" + "\n");
+         strBui.append("  Ent: " + this.element + "\n");
+
+         return strBui.toString();
     }
 }
 
